@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@font-face {
+  font-family: Montserrat;
+  src: url('../assets/font/Montserrat-Regular.ttf');
+
+  font-family: Poppins;
+  src: url('../assets/font/Poppins-Regular.ttf');
+}
+
+@theme {
+  --color-primaryColor: oklch(45.5% 0.1064 127.38);
+  --color-secondaryColor: oklch(71.36% 0.1812 50.84);
+  --color-highlightColor: oklch(100% 0 0);
+  --color-neutralColor: oklch(0% 0 0);
+  --color-bgColor: oklch(93.78% 0.0174 286.06);
+}
+
+@layer components {
+  .bg-auth {
+    @apply h-screen flex items-center justify-center bg-gradient-to-t from-[#466114] via-[#dae0d0] to-white;
+  }
+}
+
+@layer base {
+  input {
+    font-family: Poppins, sans-serif;
+    color: var(--color-neutralColor);
+    background-color: var(--color-highlightColor) !important;
+    outline: none !important;
+  }
+}
