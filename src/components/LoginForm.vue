@@ -11,7 +11,6 @@ const submitForm = () => {
   //.then(response => console.log(response))
   //.catch(error => console.error(error))
   // Reset form inputs
-  console.log(userId.value, userPassword.value)
 }
 </script>
 

@@ -1,7 +1,7 @@
 <script setup>
-import LoginForm from '../src/components/LoginForm.vue'
+import Login from './views/Login.vue'
 </script>
 
 <template>
-  <LoginForm />
+  <Login />
 </template>
