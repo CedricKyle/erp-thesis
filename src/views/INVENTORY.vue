@@ -1,7 +1,23 @@
 <script setup>
-import { Plus, ChevronDown } from 'lucide-vue-next'
+import { Plus } from 'lucide-vue-next'
+import CategoryDropdown from '@/components/Inventory/CategoryDropdown.vue'
+import DryGoodsTable from '@/components/Inventory/DryGoodsTable.vue'
+import FoodProductsTable from '@/components/Inventory/FoodProductsTable.vue'
+import WetGoodsTable from '@/components/Inventory/WetGoodsTable.vue'
 
-// import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
+const selectedCategory = ref('Food Products')
+
+const updateCategory = (category) => {
+  selectedCategory.value = category
+}
+
+const activeTable = computed(() => {
+  if (selectedCategory.value === 'Dry Goods') return DryGoodsTable
+  if (selectedCategory.value === 'Wet Goods') return WetGoodsTable
+  return FoodProductsTable
+})
 
 // const productId = ref('')
 // const productName = ref('')
@@ -37,11 +53,12 @@ import { Plus, ChevronDown } from 'lucide-vue-next'
       </div>
       <div class="flex flex-wrap gap-5">
         <div
-          class="category border border-primaryColor bg-white flex justify-center items-center px-5 rounded-sm min-w-0 flex-grow"
+          class="category border border-primaryColor bg-white flex justify-center items-center px-5 rounded-sm min-w-[200px] flex-grow"
         >
           <p class="text-black flex items-center justify-center w-full h-full">
-            category <ChevronDown class="ml-5" />
+            {{ selectedCategory }}
           </p>
+          <CategoryDropdown @updateCategory="updateCategory" class="text-black" />
         </div>
         <div
           class="add-new-stock border border-primaryColor bg-white flex justify-center items-center px-5 rounded-sm min-w-0 flex-grow"
@@ -60,41 +77,7 @@ import { Plus, ChevronDown } from 'lucide-vue-next'
       </div>
     </div>
 
-    <!-- Table Container-->
-    <div class="overflow-x-auto w-full mx-auto rounded-box bg-base-100">
-      <table class="table-md w-full max-w-full font-Poppins">
-        <thead class="bg-primaryColor">
-          <tr>
-            <th class="w-10">Id</th>
-            <th class="w-70">Product Name</th>
-            <th class="w-25">Price</th>
-            <th class="w-45">Priority Stock</th>
-            <th class="w-45">Expiry Date</th>
-            <th class="w-45">Secondary Stock</th>
-            <th class="w-45">Expiry Date</th>
-            <th class="w-25">Status</th>
-            <th class="w-25">Max Qty</th>
-            <th class="w-45">Action</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white">
-          <!--Row starts here-->
-          <tr class="text-black">
-            <td class="font-bold">1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="s">
-              <span class="bg-[#D4F6FF] px-3 rounded-lg text-[#80C4E9] font-bold">Good</span>
-            </td>
-            <td class="font-bold"></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <!-- Table Section-->
+    <component v-if="activeTable" :is="activeTable" />
   </div>
 </template>
