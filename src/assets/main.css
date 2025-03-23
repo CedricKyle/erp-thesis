@@ -15,6 +15,8 @@
   --color-highlightColor: oklch(100% 0 0);
   --color-neutralColor: oklch(0% 0 0);
   --color-bgColor: oklch(93.78% 0.0174 286.06);
+
+  --font-Poppins: Poppins, sans-serif;
 }
 
 @layer components {
@@ -29,5 +31,14 @@
     color: var(--color-neutralColor);
     background-color: var(--color-highlightColor) !important;
     outline: none !important;
+  }
+  th {
+    text-align: left !important;
+  }
+  p {
+    font-family: Poppins, sans-serif;
+  }
+  body {
+    font-family: Popppins, sans-serif;
   }
 }
