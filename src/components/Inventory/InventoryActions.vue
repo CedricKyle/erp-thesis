@@ -1,16 +1,12 @@
 <script setup>
 import CategoryDropdown from './CategoryDropdown.vue'
-import AddProduct from './AddProduct/FormAddProducts.vue'
+import FormAddProducts from './AddProduct/FormAddProducts.vue'
 
 defineProps(['selectedCategory'])
 const emit = defineEmits(['updateCategory0', 'addProduct'])
 
 const updateCategory = (category) => {
   emit('updateCategory', category)
-}
-
-const addProduct = (newProduct) => {
-  emit('addProduct', newProduct)
 }
 </script>
 
@@ -49,16 +45,14 @@ const addProduct = (newProduct) => {
         class="add-new-stock border border-primaryColor bg-white flex justify-center items-center px-5 rounded-sm min-w-0 flex-grow"
       >
         <p class="text-black flex items-center justify-center w-full h-full">Add New Product</p>
-        <AddProduct @addProduct="addProduct" />
+        <FormAddProducts />
       </div>
 
       <!-- Prepare Item Container-->
       <div
         class="prepare-item border border-primaryColor bg-white flex justify-center items-center px-5 rounded-sm min-w-0 flex-grow"
       >
-        <p class="text-black flex items-center justify-center w-full h-full">
-          Prepare Item
-        </p>
+        <p class="text-black flex items-center justify-center w-full h-full">Prepare Item</p>
       </div>
     </div>
   </div>

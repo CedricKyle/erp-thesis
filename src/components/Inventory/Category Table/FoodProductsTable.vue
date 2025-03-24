@@ -10,7 +10,7 @@ import TableHeader from '../TableHeader.vue'
       <tbody class="bg-white">
         <!--Row starts here-->
         <tr class="text-black">
-          <td class="font-bold">1</td>
+          <td class="font-bold"></td>
           <td></td>
           <td></td>
           <td></td>
