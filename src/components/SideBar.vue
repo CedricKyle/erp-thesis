@@ -60,7 +60,7 @@ const formatTabName = (tabName) => {
                 @click="selectedTab(tabName)"
                 :class="{ active: currentTab === tabName }"
               >
-                <component :is="tab.icon" class="w-7 h-7" />
+                <component :is="tab.icon" class="w-7 h-7 cursor-pointer" />
               </button>
             </div>
           </li>
