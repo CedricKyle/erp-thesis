@@ -3,7 +3,7 @@ import CategoryDropdown from './CategoryDropdown.vue'
 import FormAddProducts from './AddProduct/FormAddProducts.vue'
 
 defineProps(['selectedCategory'])
-const emit = defineEmits(['updateCategory0', 'addProduct'])
+const emit = defineEmits(['updateCategory', 'addProduct'])
 
 const updateCategory = (category) => {
   emit('updateCategory', category)
