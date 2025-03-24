@@ -1,7 +1,7 @@
 <script setup>
-import DryGoodsTable from '@/components/Inventory/DryGoodsTable.vue'
-import FoodProductsTable from '@/components/Inventory/FoodProductsTable.vue'
-import WetGoodsTable from '@/components/Inventory/WetGoodsTable.vue'
+import DryGoodsTable from '@/components/Inventory/Category Table/DryGoodsTable.vue'
+import FoodProductsTable from '@/components/Inventory/Category Table/FoodProductsTable.vue'
+import WetGoodsTable from '@/components/Inventory/Category Table/WetGoodsTable.vue'
 import InventoryActions from '@/components/Inventory/InventoryActions.vue'
 
 import { ref, computed } from 'vue'
@@ -22,7 +22,7 @@ const activeTable = computed(() => {
 </script>
 
 <template>
-  <div class="w-[95%] mx-auto">
+  <div class="w-[98%] mx-auto">
     <!-- Action Container -->
     <InventoryActions :selectedCategory="selectedCategory" @updateCategory="updateCategory" />
 

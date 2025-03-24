@@ -1,6 +1,7 @@
 <script setup>
 import { defineEmits } from 'vue'
 import { ChevronDown } from 'lucide-vue-next'
+
 const emit = defineEmits(['updateCategory'])
 
 const selectedCategory = (category) => {

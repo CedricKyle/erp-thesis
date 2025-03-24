@@ -1,15 +1,16 @@
 <script setup>
-import TableHeader from './TableHeader.vue'
+import TableHeader from '../TableHeader.vue'
 </script>
 
 <template>
   <div class="overflow-x-auto w-full mx-auto rounded-box bg-base-100">
     <table class="table-md w-full max-w-full font-Poppins">
+      <!--  Table Header starts here-->
       <TableHeader />
       <tbody class="bg-white">
         <!--Row starts here-->
         <tr class="text-black">
-          <td class="font-bold">3</td>
+          <td class="font-bold">1</td>
           <td></td>
           <td></td>
           <td></td>

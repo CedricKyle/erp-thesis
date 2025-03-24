@@ -1,12 +1,16 @@
 <script setup>
-import { Plus } from 'lucide-vue-next'
 import CategoryDropdown from './CategoryDropdown.vue'
+import AddProduct from './AddProduct/FormAddProducts.vue'
 
 defineProps(['selectedCategory'])
-const emit = defineEmits(['updateCategory'])
+const emit = defineEmits(['updateCategory0', 'addProduct'])
 
 const updateCategory = (category) => {
   emit('updateCategory', category)
+}
+
+const addProduct = (newProduct) => {
+  emit('addProduct', newProduct)
 }
 </script>
 
@@ -14,7 +18,7 @@ const updateCategory = (category) => {
   <div class="first-container flex flex-wrap justify-between m-5 w-full mx-auto">
     <div class="search-container w-80 max-w-full">
       <label class="input !outline-none border-1 border-primaryColor bg-white">
-        <svg class="h-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg class="h-[1.5em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g
             stroke-linejoin="round"
             stroke-linecap="round"
@@ -30,6 +34,7 @@ const updateCategory = (category) => {
       </label>
     </div>
     <div class="flex flex-wrap gap-5">
+      <!--Category Container-->
       <div
         class="category border border-primaryColor bg-white flex justify-center items-center px-5 rounded-sm min-w-[200px] flex-grow"
       >
@@ -38,18 +43,21 @@ const updateCategory = (category) => {
         </p>
         <CategoryDropdown @updateCategory="updateCategory" class="text-black" />
       </div>
+
+      <!-- Add Product Container-->
       <div
         class="add-new-stock border border-primaryColor bg-white flex justify-center items-center px-5 rounded-sm min-w-0 flex-grow"
       >
-        <p class="text-black flex items-center justify-center w-full h-full">
-          add new stock <Plus class="ml-5" />
-        </p>
+        <p class="text-black flex items-center justify-center w-full h-full">Add New Product</p>
+        <AddProduct @addProduct="addProduct" />
       </div>
+
+      <!-- Prepare Item Container-->
       <div
         class="prepare-item border border-primaryColor bg-white flex justify-center items-center px-5 rounded-sm min-w-0 flex-grow"
       >
         <p class="text-black flex items-center justify-center w-full h-full">
-          prepare item <Plus class="ml-5" />
+          Prepare Item
         </p>
       </div>
     </div>

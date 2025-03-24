@@ -1,5 +1,5 @@
 <script setup>
-import TableHeader from './TableHeader.vue'
+import TableHeader from '../TableHeader.vue'
 </script>
 
 <template>
