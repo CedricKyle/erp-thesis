@@ -50,5 +50,10 @@ export const useProductStore = defineStore('productStore', {
         console.error('Error loading from local storage', error)
       }
     },
+
+    clearAllProducts() {
+      this.products = []
+      localStorage.removeItem('products')
+    },
   },
 })
