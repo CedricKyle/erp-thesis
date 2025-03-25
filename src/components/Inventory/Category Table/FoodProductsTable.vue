@@ -1,5 +1,4 @@
 <script setup>
-import TableHeader from '../TableHeader.vue'
 import { useProductStore } from '@/stores/Products'
 
 const productStore = useProductStore()
@@ -53,7 +52,20 @@ const getStatusStyle = (status) => {
   <div class="overflow-x-auto w-full mx-auto rounded-box bg-base-100">
     <table class="table-md w-full max-w-full font-Poppins">
       <!--  Table Header starts here-->
-      <TableHeader />
+      <thead class="bg-primaryColor">
+        <tr>
+          <th class="w-25">Id</th>
+          <th class="w-60">Product Name</th>
+          <th class="w-25">Price</th>
+          <th class="w-45">Priority Stock</th>
+          <th class="w-45">Expiry Date</th>
+          <th class="w-45">Backup Stock</th>
+          <th class="w-45">Expiry Date</th>
+          <th class="w-25">Status</th>
+          <th class="w-25">Max Qty</th>
+          <th class="w-35">Action</th>
+        </tr>
+      </thead>
       <tbody class="bg-white">
         <!--Row starts here-->
         <tr
