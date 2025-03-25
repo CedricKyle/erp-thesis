@@ -30,3 +30,5 @@ const activeTable = computed(() => {
     <component v-if="activeTable" :is="activeTable" />
   </div>
 </template>
+
+

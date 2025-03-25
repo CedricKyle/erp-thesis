@@ -7,6 +7,15 @@ import { useProductStore } from '@/stores/Products'
 
 const productStore = useProductStore()
 
+const fileToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => resolve(reader.result)
+    reader.onerror = (error) => reject(error)
+  })
+}
+
 const newProducts = ref({
   name: '',
   price: '',
@@ -18,29 +27,37 @@ const newProducts = ref({
   imgs: null,
 })
 
-const submitProduct = () => {
-  productStore.addProduct({
-    ...newProducts.value,
-    price: parseFloat(newProducts.value.price) || 0,
-    primaryStock: parseInt(newProducts.value.primaryStock) || 0,
-    backupStock: parseInt(newProducts.value.backupStock) || 0,
-    maxQty: parseInt(newProducts.value.maxQty) || 0,
-  })
-  console.log(productStore.products)
+const submitProduct = async () => {
+  try {
+    let imageData = null
+    if (newProducts.value.imgs) {
+      imageData = await fileToBase64(newProducts.value.imgs)
+    }
 
-  newProducts.value = {
-    name: '',
-    price: '',
-    primaryStock: '',
-    backupStock: '',
-    primaryExpiry: '',
-    backupExpiry: '',
-    maxQty: '',
-    imgs: null,
+    await productStore.addProduct({
+      ...newProducts.value,
+      imgs: imageData,
+    })
+
+    // Reset form only if product was added successfully
+    newProducts.value = {
+      name: '',
+      price: '',
+      primaryStock: '',
+      backupStock: '',
+      primaryExpiry: '',
+      backupExpiry: '',
+      maxQty: '',
+      imgs: null,
+    }
+    previewImage.value = null
+
+    // Close modal
+    emit('update:isOpen', false)
+  } catch (error) {
+    console.error('Error submitting product:', error)
+    alert('Failed to add product: ' + error.message)
   }
-
-  // modal.value?.close()
-  // emit('update:isOpen', false)
 }
 
 const previewImage = ref(null)
